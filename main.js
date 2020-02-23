@@ -19,8 +19,10 @@ class Elevator {
         this.log = []; // houses a array of objects which include timestamped records of trips, and floors passed
         this.inService = true; // indicates whether or not an elevator is in service
     }
-    answerDispatch() {
+    answerDispatch(floor) {
         // answer the call for an elevator
+        // 1. determines if the floor is above or below this.curFloor
+        // 
     }
     openDoor() {
         // opens the door
@@ -44,6 +46,8 @@ class button {
     }
     pushButton() {
         // calls the closest elecator and sets pushed status to true
+        // 1. sets this.pushed = true
+        // 2. calls controller.findElevator(this.floor) to get the closest elevator to respond
     }
     reset() {
         // resets button to inactive mode
@@ -68,11 +72,15 @@ var controller {
         // 3. generates a random time between 1 and 10 seconds
         // 4. calls itself at this.randomCaller() in order to call another elevator and continue the simulation
     },
-    findElevator: function() {
+    findElevator: function(floor) {
         // searches for the closest elevator based on their position, movement and service level
-        // ends with this.dispatch(elev); to call the correct elevator
+        // 1. loops through the elevators to see which ones are moving and if they're going to pass the floor called
+        //      a. if match is found then it calls this.dispatch(elev, floor)
+        // 2. if no moving elevators are found then it finds the closest stopped elvator
+        //      a. once a match is found it calls this.dispatch(elev, floor)
     },
-    dispatch: function() {
+    dispatch: function(elev, floor) {
         // dispatches the designated elevator to the call floor
+        // 1. calls this.elevators[elev].answerDispatch(floor) to send elevator
     }
 }
