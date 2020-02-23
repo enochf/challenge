@@ -1,9 +1,3 @@
-// items to consider in challenge
-//      Elevator class
-//      Building
-//      Controller
-//      Buttons
-
 // building object sets default values for the rest of the challenge
 var building = {
     floors: 8,
@@ -49,14 +43,14 @@ class Elevator {
         //      d. begins changing this.curFloor by increments of 1 at 1 second intervals until it equals the floor selected
         //      e. sets this.moving = false
         //      f. sets this.direction = null
-        //      g. calls this.closeDoor()
+        //      g. calls this.openDoor(dispatch = false)
         // 2. else
         //      a. counts the number of trip in this.log[] to see if it is greater than 99
         //      b. if it is then it updates this.inService = false
     }
-    floorRequest() {
-        // indicates which floor the elevator need to go to once the door closes
-    }
+    // floorRequest() {
+    //     // indicates which floor the elevator need to go to once the door closes
+    // }
     report(trip, floor) {
         // reports when elevator opens and closes door
         // 1. pushes the timestamp and floor to this.log[trip]
@@ -64,7 +58,7 @@ class Elevator {
 }
 
 // method by which elevators are called
-class button {
+class Button {
     constructor() {
         this.floor = null; // indecates which floor the button is assigned to
         this.pushed = false; // indicates if the button has been pushed and is active or if it is inactive
@@ -76,6 +70,7 @@ class button {
     }
     reset() {
         // resets button to inactive mode
+        // 1. sets this.pushed = false
     }
 }
 
@@ -85,11 +80,11 @@ var controller {
         // initiates the elevator simulation
         // 1. runs a for loop with the amount of elevators indicated in building.elevators
         // 2. craetes a new Elveator object for each loop and pushes it to the controller.elevators[] array
-        // 3. creates a new button object for each loop
+        // 3. creates a new Button object for each loop
         // 4. calls the controller.randomCaller() function to call the first elevator
     },
-    elevators: [], // houses all of the elevator objects once they're created by the controller.init() function and they're current position
-    buttons: [], // houses all of the button objects once they're created by the controller.init() 
+    elevators: [], // houses all of the Elevator objects once they're created by the controller.init() function and they're current position
+    buttons: [], // houses all of the Button objects once they're created by the controller.init() 
     randomCaller: function() {
         // finds a random floor based on the number of floors indicated the building.foors object
         // 1. finds a random number between 1 and (building.floors)
@@ -110,3 +105,9 @@ var controller {
         // 1. calls this.elevators[elev].answerDispatch(floor) to send elevator
     }
 }
+
+$(document).ready(function() {
+
+    controller.init();
+
+});
