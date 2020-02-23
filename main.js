@@ -21,20 +21,32 @@ class Elevator {
     }
     answerDispatch(floor) {
         // answer the call for an elevator
-        // 1. determines if the floor is above or below this.curFloor
-        // 
+        // 1. creates a variable called "trip" wtih a new trip pushed to the this.log array
+        // 2. determines if the floor is above or below this.curFloor
+        // 3. this.direction is set to up or down based on the determination above
+        // 4. begins changing this.curFloor by increments of 1 at 1 second intervals until it equals the floor called
+        // 5. calls this.report(trip, this.curFloor) at each this.curFloor change
+        // 6. once this.curFloor = floor then the following occurs:
+        //      a. this.moving is set to false
+        //      b. this.direction is set to null
+        //      c. this.openDoor() is called
     }
     openDoor() {
         // opens the door
+        // 1. the controller.buttons[this.curFloor].reset() is called in order to turn off button
+        // 2. finds a random number between 1 and (building.floors) that does not match this.curFloor
+        // 3. calls this.closeDoor(random selected number) in order to send the elevator to that particular floor
     }
-    closeDoor() {
+    closeDoor(floor) {
         // closes the door
+        // 1. sets this.
     }
     floorRequest() {
         // indicates which floor the elevator need to go to once the door closes
     }
-    report() {
+    report(trip, floor) {
         // reports when elevator opens and closes door
+
     }
 }
 
