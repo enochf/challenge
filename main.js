@@ -29,24 +29,37 @@ class Elevator {
         // 6. once this.curFloor = floor then the following occurs:
         //      a. this.moving is set to false
         //      b. this.direction is set to null
-        //      c. this.openDoor() is called
+        //      c. this.openDoor(dispatch = true) is called
     }
-    openDoor() {
+    openDoor(dispatch) {
         // opens the door
         // 1. the controller.buttons[this.curFloor].reset() is called in order to turn off button
-        // 2. finds a random number between 1 and (building.floors) that does not match this.curFloor
-        // 3. calls this.closeDoor(random selected number) in order to send the elevator to that particular floor
+        // 2. if dispatch = true then:
+        //      a. finds a random number between 1 and (building.floors) that does not match this.curFloor
+        //      b. calls this.closeDoor(random selected number) in order to send the elevator to that particular floor 
+        // 3. else
+        //      a. call this.closeDoor()
     }
     closeDoor(floor) {
         // closes the door
-        // 1. sets this.
+        // 1. if floor does not equal null
+        //      a. sets this.moving = true
+        //      b. determines if the floor is above or below this.curFloor
+        //      c. sets this.direction to up or down depending on determination
+        //      d. begins changing this.curFloor by increments of 1 at 1 second intervals until it equals the floor selected
+        //      e. sets this.moving = false
+        //      f. sets this.direction = null
+        //      g. calls this.closeDoor()
+        // 2. else
+        //      a. counts the number of trip in this.log[] to see if it is greater than 99
+        //      b. if it is then it updates this.inService = false
     }
     floorRequest() {
         // indicates which floor the elevator need to go to once the door closes
     }
     report(trip, floor) {
         // reports when elevator opens and closes door
-
+        // 1. pushes the timestamp and floor to this.log[trip]
     }
 }
 
@@ -86,10 +99,11 @@ var controller {
     },
     findElevator: function(floor) {
         // searches for the closest elevator based on their position, movement and service level
-        // 1. loops through the elevators to see which ones are moving and if they're going to pass the floor called
+        // 1. loops through the inService elevators to see which ones are moving and if they're going to pass the floor called
         //      a. if match is found then it calls this.dispatch(elev, floor)
         // 2. if no moving elevators are found then it finds the closest stopped elvator
         //      a. once a match is found it calls this.dispatch(elev, floor)
+        // 3. if there are no more elevators in service then the simulation is over !!!!!!!!
     },
     dispatch: function(elev, floor) {
         // dispatches the designated elevator to the call floor
